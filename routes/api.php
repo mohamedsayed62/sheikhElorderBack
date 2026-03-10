@@ -13,16 +13,13 @@ Route::get('/user', function (Request $request) {
 })->middleware('auth:sanctum');
 
 Route::post('storeUser', [storeController::class, "store"]);
+Route::get('getUser/{id}/{name}', [storeController::class, "getUser"]);
 Route::post('storeGroup', [storeGroupController::class, "store"]);
 Route::post('storeOrder', [storeOrderController::class, "store"]);
-<<<<<<< HEAD
-Route::get('getGroup', [getGroupController::class, "get"]);
-=======
 Route::get('getOrder/{id}', [storeOrderController::class, "get"]);
 Route::get('showOrder/{id}', [storeOrderController::class, "show"]);
 Route::get('getGroup/{groupId}', [getGroupController::class, "get"]);
 Route::get('setBox/{groupId}', [getGroupController::class, "setBox"]);
 Route::get('getBoxs/{groupId}', [getGroupController::class, "getBoxs"]);
 Route::get('check/{id}', [getGroupController::class, "checkAdmin"]);
->>>>>>> ebf1a3b (Initial commit)
 Route::get('joinGroup/{ket}/{id}', [joinGroupController::class, "join"]);

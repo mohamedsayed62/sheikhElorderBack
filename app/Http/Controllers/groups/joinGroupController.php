@@ -12,11 +12,10 @@ class joinGroupController extends Controller
     if (DB::table("groups")->where("key", $key)->exists()) {
       $groupId = DB::table("groups")->where("key", $key)->select(["id"])->get();
       DB::table("users")->where("id", $id)->update(["group_id" => $groupId[0]->id]);
-<<<<<<< HEAD
-=======
 
-      return response()->json(['group_id' => $groupId]);
->>>>>>> ebf1a3b (Initial commit)
+      return response()->json(["flag" => true , 'group_id' => $groupId]);
+    } else {
+      return response()->json(["flag" => false, "error" => "هذا الجروب غير موجود"]);
     }
   }
 }

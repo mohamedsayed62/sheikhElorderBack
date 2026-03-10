@@ -10,31 +10,22 @@ class storeOrderController extends Controller
 {
   public function store(Request $request)
   {
-<<<<<<< HEAD
-    foreach ($request->all() as $value) {
-      if (sizeof($value) == 3) {
-        $id = DB::table("order")->insertGetId($value);
-      }
-    }
 
-    foreach ($request->all() as $value) {
-      if (sizeof($value) == 4) {
-        $value += ["order_id" => $id];
-        $id = DB::table("categories")->insert($value);
-      }
-    }
-=======
-    foreach ($request->all() as $key => $value) {
-      if ($key == count($request->all())- 1) {
-        $id = DB::table("order")->insertGetId($value);
-      }
-    }
-    foreach ($request->all() as $key => $value) {
-      if ($key != count($request->all())- 1) {
-        $value += ["order_id" => $id];
-        DB::table("categories")->insert($value);
-      }
-    }
+    $id=DB::table("order")->insertGetId($request->orders);
+
+    $category = array_map(function ($cat) use ($id) {
+      $cat["order_id"] = $id;
+
+      return $cat;
+    }, $request->categories);
+
+    DB::table("categories")->insert($category);
+    // foreach ($request->all() as $key => $value) {
+    //   if ($key != count($request->all())- 1) {
+    //     $value += ["order_id" => $id];
+    //     DB::table("categories")->insert($value);
+    //   }
+    // }
 
   }
 
@@ -51,6 +42,5 @@ class storeOrderController extends Controller
     $categories = DB::table("categories")->where("order_id", $id)->get();
 
     return response()->json($categories);
->>>>>>> ebf1a3b (Initial commit)
   }
 }

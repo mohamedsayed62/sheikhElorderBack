@@ -52,11 +52,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
-    'url' => env('APP_URL', 'https://sheikhelorderback-production.up.railway.app/'),
-=======
     'url' => env('APP_URL', 'http://localhost'),
->>>>>>> ebf1a3b (Initial commit)
 
     /*
     |--------------------------------------------------------------------------

@@ -19,17 +19,6 @@ class storeGroupController extends Controller
         'key.unique' => 'هذا الكود مستخدم'
       ]
     );
-<<<<<<< HEAD
-    $id = DB::table("groups")->insertGetId($request->all());
-    
-    DB::table('users')
-  ->where('id', $request->admin_id)
-  ->update([
-      'group_id' => $id
-  ]);
-
-    return response()->json(['msg' => 'تمت الاضافة']);
-=======
 
     $id = DB::table("groups")->insertGetId($request->all());
 
@@ -40,6 +29,5 @@ class storeGroupController extends Controller
     ]);
 
     return response()->json(['group_id' => $id]);
->>>>>>> ebf1a3b (Initial commit)
   }
 }

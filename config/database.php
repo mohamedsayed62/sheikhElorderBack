@@ -16,11 +16,7 @@ return [
     |
     */
 
-<<<<<<< HEAD
-    'default' => env('DB_CONNECTION', 'mysql'),
-=======
     'default' => env('DB_CONNECTION', 'sqlite'),
->>>>>>> ebf1a3b (Initial commit)
 
     /*
     |--------------------------------------------------------------------------
