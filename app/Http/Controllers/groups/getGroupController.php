@@ -30,6 +30,7 @@ class getGroupController extends Controller
   public function get($groupId)
   {
     $users = dispatch_sync(new GetGroupOrders($groupId));
+      
     return response()->json($users);
   }
 
